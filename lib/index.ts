@@ -31,7 +31,7 @@ const _intervalStorage: {
 
 //
 
-export class TwWebsocket {
+export class HmWebsocket {
   // 是否连接上
   public isConnect: boolean;
   // WebSocket
@@ -51,7 +51,7 @@ export class TwWebsocket {
   // 消息缓存
   private _msgLog: Array<MsgLogInterface>;
   // 兼容单例
-  private static _instance: TwWebsocket;
+  private static _instance: HmWebsocket;
   //
   private _onEventMap: {
     [key in keyof _OnEventMapInterface]?: Array<(e: _OnEventMapInterface[key]) => void>;
@@ -86,7 +86,7 @@ export class TwWebsocket {
     this._onEventMap = {};
     this._closeCode = 0;
     autoConnect && this.connect();
-    TwWebsocket._instance = this;
+    HmWebsocket._instance = this;
   }
 
   /**
@@ -287,9 +287,9 @@ export class TwWebsocket {
 
   // 兼容单例
   public static getInstance(props: WebsocketConstructorInterface) {
-    if (!TwWebsocket._instance) {
-      TwWebsocket._instance = new TwWebsocket(props);
+    if (!HmWebsocket._instance) {
+      HmWebsocket._instance = new HmWebsocket(props);
     }
-    return TwWebsocket._instance;
+    return HmWebsocket._instance;
   }
 }
